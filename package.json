@@ -1,0 +1,13 @@
+{
+    "name": "job-hunter",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
+      "start:client": "cd client && npm run dev",
+      "start:server": "cd server && npm run build && npm run start:server:run"
+
+    },
+    "dependencies": {
+      "concurrently": "^8.0.5"
+    }
+  }

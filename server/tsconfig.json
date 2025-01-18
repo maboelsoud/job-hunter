@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "target": "es6", // Or a newer ES version if needed
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "outDir": "./dist", // Compiled JS files will go here
+      "strict": true,  // Enforce stricter type checking
+      "skipLibCheck": true
+    }
+  }
