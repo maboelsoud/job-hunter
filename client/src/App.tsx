@@ -1,14 +1,27 @@
 import { useState } from 'react'
+import { Container } from '@mantine/core';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+// import './App.css'
+import { TableDemo } from './components/Table';
+
+const demoProps = {
+  bg: 'var(--mantine-color-blue-light)',
+  h: 500,
+  mt: 'lg',
+};
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
+    <Container {...demoProps}
+    >
+      Default Container
+      <TableDemo></TableDemo>
+      </Container>
+      {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -27,7 +40,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   )
 }
