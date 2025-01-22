@@ -5,6 +5,7 @@
       "esModuleInterop": true,
       "outDir": "./dist", // Compiled JS files will go here
       "strict": true,  // Enforce stricter type checking
+      "resolveJsonModule": true,
       "skipLibCheck": true
     }
   }
