@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "start:server:run": "export NODE_ENV=development && tsnd --respawn index.ts"
+    "start:server:run": "export NODE_ENV=development && tsnd --respawn src/index.ts"
   },
   "keywords": [],
   "author": "",
