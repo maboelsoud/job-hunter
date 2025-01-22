@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
-import { getClient } from './oAuthService';
+import { getClient } from '../auth/oAuthService';
 
-type headerType  = {name: string, value: string};
+type headerType = { name: string, value: string };
 
 
 export interface GmailMessage {
@@ -44,13 +44,13 @@ export async function getRecentEmails(numEmails: number): Promise<GmailMessage[]
     //Sort the messages by date (you will have to obtain message data individually for this)
     const messagesWithDates = await Promise.all(
         messages.map(async (message) => {
-          const msg = await gmail.users.messages.get({
-            userId: 'me',
-            id: message.id,
-          });
-          return { ...msg.data, ...message};
+            const msg = await gmail.users.messages.get({
+                userId: 'me',
+                id: message.id,
+            });
+            return { ...msg.data, ...message };
         })
-      );
+    );
     //Sort the array by date
     messagesWithDates.sort((a, b) => new Date(b.internalDate).getTime() - new Date(a.internalDate).getTime());
     return messagesWithDates.slice(0, numEmails); // Return only the specified number of emails.
@@ -66,26 +66,26 @@ interface parsedEmailType {
     body: string | undefined;
 }
 
-const filterByName = (arr: headerType[] | undefined, key: string): string | undefined  => {
-    return arr?.find((header: headerType)=> header.name === key)?.value;
+const filterByName = (arr: headerType[] | undefined, key: string): string | undefined => {
+    return arr?.find((header: headerType) => header.name === key)?.value;
 }
 
 export function parseEmailContent(jsonData: GmailMessage[]): parsedEmailType[] {
-    return jsonData.map((data)=> {
-         return {
-            from: filterByName(data.payload?.headers,"From"),
-            to:  filterByName(data.payload?.headers,"To"),
-            date: filterByName(data.payload?.headers,"Date"),
-            subject: filterByName(data.payload?.headers,"Subject"),
+    return jsonData.map((data) => {
+        return {
+            from: filterByName(data.payload?.headers, "From"),
+            to: filterByName(data.payload?.headers, "To"),
+            date: filterByName(data.payload?.headers, "Date"),
+            subject: filterByName(data.payload?.headers, "Subject"),
             snippet: data.snippet,
-            body: data.payload?.parts?.reduce((acc,part)=>{
+            body: data.payload?.parts?.reduce((acc, part) => {
                 if (part.mimeType === 'text/plain') {
                     let decodedData = part.body.data;
-                    decodedData = Buffer.from(decodedData, 'base64').toString(); 
+                    decodedData = Buffer.from(decodedData, 'base64').toString();
                     return acc + decodedData;
-                  }
+                }
                 return acc;
-            },""),
+            }, ""),
         }
     })
 
