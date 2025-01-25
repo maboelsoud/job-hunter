@@ -1,47 +1,65 @@
 import { useState } from 'react'
-import { Container } from '@mantine/core';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Button, Card, Container, Group, LoadingOverlay, Pagination, Paper, ScrollArea, Space, Tabs, Title } from '@mantine/core';
 // import './App.css'
-import { TableDemo } from './components/Table';
+import { JobRowsTable } from './components/Table';
 
 const demoProps = {
-  bg: 'var(--mantine-color-blue-light)',
-  h: 500,
-  mt: 'lg',
+  // bg: 'var(--mantine-color-blue-light)',
+  // h: 500,
+  // mt: 'lg',
+  p: 40,
+  style: { maxWidth: '100%', width: '80%' , minHeight: '100vh'}, // Make container wider
+
 };
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const totalPages = 2;
+  const currentPage = 1;
+  const loading = false;
   return (
-    <>
-    <Container {...demoProps}
-    >
-      Default Container
-      <TableDemo></TableDemo>
-      </Container>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-    </>
+    <Container {...demoProps}>
+      <LoadingOverlay visible={loading} /> {/* Show loading overlay */}
+      <Title order={1}>Job Statuses</Title>
+      <Space h="md" /> {/* Add vertical spacing */}
+      <Group position="center">
+        <Button>Refresh</Button>
+        <Button>Fetch Older</Button>
+        <Button>Fetch Newer</Button>
+      </Group>
+      <Space h="md" />
+
+      <Paper shadow="md" p="xl" radius="md" withBorder>
+        <Tabs defaultValue="jobs">
+          <Tabs.List>
+            <Tabs.Tab value="jobs">
+              Jobs
+            </Tabs.Tab>
+            <Tabs.Tab value="emails">
+              Emails
+            </Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="jobs">
+            <ScrollArea style={{ height: 700 }}>
+              <JobRowsTable></JobRowsTable>
+            </ScrollArea>
+          </Tabs.Panel>
+          <Tabs.Panel value="emails">
+            <ScrollArea style={{ height: 700 }}>
+            </ScrollArea>
+          </Tabs.Panel>
+        </Tabs>
+        {totalPages > 1 && ( // Only show pagination if there are multiple pages
+          <Pagination
+            total={totalPages}
+            page={currentPage}
+            // onChange={handlePageChange}
+            position="center"
+          />
+        )}
+      </Paper>
+
+    </Container>
   )
 }
 
