@@ -9,8 +9,8 @@ const demoProps = {
   // bg: 'var(--mantine-color-blue-light)',
   // h: 500,
   // mt: 'lg',
-  p: 40,
-  style: { maxWidth: '100%', width: '80%' , minHeight: '100vh'}, // Make container wider
+  // p: 20,
+  // style: { maxWidth: '100%', width: '80%' , minHeight: '100vh'}, // Make container wider
 
 };
 

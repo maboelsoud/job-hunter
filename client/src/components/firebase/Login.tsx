@@ -1,17 +1,23 @@
-import { Paper, Stack, Text, TextInput, PasswordInput, Group, Button, Anchor, Checkbox, Divider } from "@mantine/core"
+import { Paper, Stack, Text, TextInput, PasswordInput, Group, Button, Anchor, Checkbox, Divider, Container, SimpleGrid } from "@mantine/core"
 import { GoogleButton } from "./googleButton";
 import { useForm } from '@mantine/form';
 import { useToggle, upperFirst } from "@mantine/hooks";
+import { showNotification } from '@mantine/notifications';
+import { LinkedInButton } from "./linkedInButton";
 
-export const Login = (
+interface LoginProps {
+  handleSignInWithEmail: (values: { name: string; email: string; password: string; terms: boolean }) => void,
+  handleSignInWithGoogle: () => void
+  handleSignInWithLinkedIn: () => void
+  handleForgotPw: (email: string) => void,
+}
+
+export const Login: React.FC<LoginProps> = (
   {
     handleSignInWithEmail,
     handleSignInWithGoogle,
+    handleSignInWithLinkedIn,
     handleForgotPw,
-  }: {
-    handleSignInWithEmail: (arg0: any) => void,
-    handleSignInWithGoogle: (arg0: any) => void
-    handleForgotPw: (arg0: any) => void,
   }) => {
 
   const [loginType, toggleLogin] = useToggle(['login', 'register']);
@@ -36,43 +42,53 @@ export const Login = (
       }
     },
   });
+
+  const handleSubmit = async (values: any) => {
+    try {
+      if (isForgotPw) {
+        await handleForgotPw(values.email);
+        form.reset();
+        showNotification({ title: 'Success', message: 'Password reset email sent', color: 'green' })
+      } else {
+        await handleSignInWithEmail(values);
+        form.reset();
+        showNotification({ title: 'Success', message: 'successfully signed in', color: 'green' })
+      }
+    } catch (err: any) {
+      showNotification({ title: 'Error', message: err.message })
+    }
+  }
+
   return (
-    <>
+    <Container size="xs" my={30} pos="relative">
       <Paper radius="md" p="xl" withBorder>
         <Text size="lg" fw={500}>
           {
             isForgotPw ?
               (`Enter your email to get a reset link`)
               :
-              (`Welcome to Mantine, ${loginType} with`)
+              (`Welcome to Job Hunter, ${loginType} with`)
           }
-
         </Text>
 
         {!isForgotPw && (
           <>
             <Group grow mb="md" mt="md">
               <GoogleButton onClick={handleSignInWithGoogle} radius="xl">Google</GoogleButton>
+              <LinkedInButton onClick={handleSignInWithLinkedIn} radius="xl">LinkedIn</LinkedInButton>
             </Group>
 
             <Divider label="Or continue with email" labelPosition="center" my="lg" />
           </>
         )}
 
-        <form onSubmit={form.onSubmit((event) => {
-          if (isForgotPw) {
-            handleForgotPw(event);
-          } else {
-            handleSignInWithEmail(event);
-          }
-        })}>
+        <form onSubmit={form.onSubmit(handleSubmit)}>
           <Stack>
             {!isForgotPw && loginType === 'register' && (
               <TextInput
                 label="Name"
                 placeholder="Your name"
-                value={form.values.name}
-                onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
+                {...form.getInputProps('name')}
                 radius="md"
               />
             )}
@@ -81,9 +97,8 @@ export const Login = (
               required
               label="Email"
               placeholder="hello@mantine.dev"
-              value={form.values.email}
-              onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
-              error={form.errors.email && 'Invalid email'}
+              {...form.getInputProps('email')}
+              error={form.errors.email}
               radius="md"
             />
 
@@ -93,9 +108,8 @@ export const Login = (
                 required={!isForgotPw}
                 label="Password"
                 placeholder="Your password"
-                value={form.values.password}
-                onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-                error={form.errors.password && 'Password should include at least 6 characters'}
+                {...form.getInputProps('password')}
+                error={form.errors.password}
                 radius="md"
               />)
             }
@@ -104,14 +118,14 @@ export const Login = (
               <Checkbox
                 required={!isForgotPw}
                 label="I accept terms and conditions"
+                {...form.getInputProps('terms')}
                 checked={form.values.terms}
-                onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
               />
             )}
           </Stack>
 
           <Group justify="space-between" mt="xl">
-            <Stack align="flex-start">
+            <SimpleGrid cols={2} spacing='10'>
               {
                 !isForgotPw &&
                 (<Anchor component="button" type="button" c="dimmed" onClick={() => toggleLogin()} size="xs">
@@ -125,13 +139,13 @@ export const Login = (
                   ? "<- Back to the login page"
                   : 'forgot your password?'}
               </Anchor>
-            </Stack>
+            </SimpleGrid>
             <Button type="submit" radius="xl">
               {isForgotPw ? `Reset password` : upperFirst(loginType)}
             </Button>
           </Group>
         </form>
       </Paper>
-    </>
+    </Container>
   )
 }
