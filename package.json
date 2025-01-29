@@ -5,8 +5,12 @@
         "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
         "start:client": "cd client && npm run dev",
         "start:server": "cd server && npm run start:server:run",
+        "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
+        "build:client": "cd client && npm run build",
+        "build:server": "cd server && npm run build",
         "lint": "eslint",
-        "format": "prettier --write server client"
+        "format": "prettier --write server client",
+        "format:check": "prettier --check server client"
     },
     "dependencies": {
         "concurrently": "^8.0.5"
