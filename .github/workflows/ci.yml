@@ -1,7 +1,16 @@
 
 name: CI
 
-on: push
+on:
+    push:
+      paths:
+        - 'server/src/**'
+        - 'client/src/**'
+    pull_request:
+      branches: [ main ]
+      paths:
+        - 'server/src/**'
+        - 'client/src/**'
 
 jobs:
   build:
