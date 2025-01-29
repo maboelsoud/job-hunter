@@ -52,11 +52,11 @@ touch server/.env
 containing the following.  These can be obtained from the firebase and Google Cloud Console.  **Never check sensitive data like this into version control.**
 
 ```bash
-CLIENT_ID_GMAIL=<your-google-client-id>
-CLIENT_SECRET_GMAIL=<your-google-client-secret>
-GEMENI_API_KEY=<your-gemini-api-key> # obtained from https://aistudio.google.com/app/apikey
-GOOGLE_CLOUD_PROJECT=<your-firebase-project-name> # Firebase project name, obtained from the firebase console. Do not commit this to your repo.
-FIREBASE_PRIVATE_KEY=<your-firebase-database-private-key> # Firebase private key, obtained from the firebase console. Do not commit this to your repo.
+CLIENT_ID_GMAIL="your-google-client-id"
+CLIENT_SECRET_GMAIL="your-google-client-secret"
+GEMENI_API_KEY="your-gemini-api-key" # obtained from https://aistudio.google.com/app/apikey
+GOOGLE_CLOUD_PROJECT="your-firebase-project-name" # Firebase project name, obtained from the firebase console. Do not commit this to your repo.
+FIREBASE_PRIVATE_KEY="your-firebase-database-private-key" # Firebase private key, obtained from the firebase console. Do not commit this to your repo.
 ```
 
 5.  Start the Development Server:
@@ -66,9 +66,9 @@ npm run start
 This will start both the frontend and backend development servers concurrently.
 
 ## Usage
-Sign In: Sign in using Google, LinkedIn, or your email address and password.
-View Job Statuses: The application displays your job applications with filters.
-View Emails: Use the tabs to switch between job statuses and emails.
+- Sign In: Sign in using Google, LinkedIn, or your email address and password.
+- View Job Statuses: The application displays your job applications with filters.
+- View Emails: Use the tabs to switch between job statuses and emails.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
