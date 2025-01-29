@@ -4,9 +4,19 @@
     "scripts": {
         "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
         "start:client": "cd client && npm run dev",
-        "start:server": "cd server && npm run start:server:run"
+        "start:server": "cd server && npm run start:server:run",
+        "lint": "eslint"
     },
     "dependencies": {
         "concurrently": "^8.0.5"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.22.0",
+        "@typescript-eslint/parser": "^8.22.0",
+        "eslint": "^9.19.0",
+        "eslint-config-mantine": "^4.0.3",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.3",
+        "prettier": "^3.4.2"
     }
 }
