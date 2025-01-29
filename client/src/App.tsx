@@ -18,7 +18,7 @@ function App() {
 
   const loading = false;
   return (
-    <Container {...demoProps}>
+    <Container fluid {...demoProps}>
       <LoadingOverlay visible={loading} /> {/* Show loading overlay */}
       <Title order={1}>Job Statuses</Title>
       <Login/>
