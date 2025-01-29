@@ -42,16 +42,22 @@ Job Hunter is a web application that helps you track your job applications and m
     cd client && npm ci
     ```
 
-4.  **Set up Environment Variables:**  Create a `.env` file (add `.env` to your `.gitignore`) in the root of your project containing the following.  These can be obtained from the firebase and Google Cloud Console.  **Never check sensitive data like this into version control.**
+4.  **Set up Environment Variables:**  Create a `.env` file (add `.env` to your `.gitignore`) in the root of your project 
 
-# Server-side config (in server/.env)
-GOOGLE_CLIENT_ID=<your-google-client-id>
-GOOGLE_CLIENT_SECRET=<your-google-client-secret>
-GOOGLE_REDIRECT_URI=<your-google-redirect-uri>
-REDIS_URL=<your-redis-url>  //If using Redis for sessions.  Likely needed.
-SESSION_SECRET=<your-session-secret>  //Strong random string for sessions.  Needed if using sessions.
-FIREBASE_CREDENTIALS=<your-firebase-credentials-json-string> //Firebase credentials.  Do not commit this to your repo.
-FIREBASE_DATABASE_URL=<your-firebase-database-url> //Your Firestore database url.
+Create a `.env` file (add `.env` to your `.gitignore`) in the server repo
+
+```bash
+touch server/.env
+```
+containing the following.  These can be obtained from the firebase and Google Cloud Console.  **Never check sensitive data like this into version control.**
+
+```bash
+CLIENT_ID_GMAIL=<your-google-client-id>
+CLIENT_SECRET_GMAIL=<your-google-client-secret>
+GEMENI_API_KEY=<your-gemini-api-key> # obtained from https://aistudio.google.com/app/apikey
+GOOGLE_CLOUD_PROJECT=<your-firebase-project-name> # Firebase project name, obtained from the firebase console. Do not commit this to your repo.
+FIREBASE_PRIVATE_KEY=<your-firebase-database-private-key> # Firebase private key, obtained from the firebase console. Do not commit this to your repo.
+```
 
 5.  Start the Development Server:
 ```bash
@@ -59,7 +65,7 @@ npm run start
 ```
 This will start both the frontend and backend development servers concurrently.
 
-Usage
+## Usage
 Sign In: Sign in using Google, LinkedIn, or your email address and password.
 View Job Statuses: The application displays your job applications with filters.
 View Emails: Use the tabs to switch between job statuses and emails.
