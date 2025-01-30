@@ -6,6 +6,7 @@ import {
   LoadingOverlay,
   Space,
   Title,
+  useMatches,
 } from "@mantine/core";
 // import './App.css'
 import { Login } from "./components/firebase/Login";
@@ -35,6 +36,12 @@ const demoProps = {
 };
 
 function App() {
+
+  const sizes = useMatches({
+    base: 'base',
+    sm: 'sm',
+    // lg: 'lg',
+  });
   const [opened, { toggle }] = useDisclosure(false);
   const loading = false;
   const [auth, { toggle: toggleAuth }] = useDisclosure(!false);
@@ -52,15 +59,18 @@ function App() {
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <Title order={1}>Job Hunter</Title>
+            <Title hiddenFrom="sm" order={2}>Job Hunter</Title>
+            <Title visibleFrom="sm" order={1}>Job Hunter</Title>
           </Link>
           <GithubButton
             href="https://github.com/maboelsoud/job-hunter"
             target="_blank"
             size="sm"
             ml="auto"
-          >
-            GitHub Repo
+            px="xs"
+            isResponsive={sizes === "base"}
+            >
+            {sizes !== "base" && "GitHub Repo"}
           </GithubButton>
         </Group>
       </AppShell.Header>
