@@ -9,6 +9,7 @@
         "build:client": "cd client && npm run build",
         "build:server": "cd server && npm run build",
         "lint": "eslint",
+        "prettier": "prettier --write",
         "format": "prettier --write server client",
         "format:check": "prettier --check server client"
     },
