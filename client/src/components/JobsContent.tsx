@@ -1,5 +1,5 @@
 import { Paper, Tabs, ScrollArea, Pagination } from "@mantine/core"
-import { JobRowsTable } from "./components/Table"
+import { JobRowsTable } from "./Table"
 
 
 export const JobsContent = ()=> {
@@ -8,7 +8,7 @@ export const JobsContent = ()=> {
     return (
 
       <Paper shadow="md" p="xl" radius="md" withBorder>
-        <Tabs defaultValue="jobs">
+        {/* <Tabs defaultValue="jobs">
           <Tabs.List>
             <Tabs.Tab value="jobs">
               Jobs
@@ -26,7 +26,12 @@ export const JobsContent = ()=> {
             <ScrollArea style={{ height: 700 }}>
             </ScrollArea>
           </Tabs.Panel>
-        </Tabs>
+        </Tabs> */}
+
+<ScrollArea style={{ height: 700 }}>
+              <JobRowsTable></JobRowsTable>
+            </ScrollArea>
+
         {totalPages > 1 && ( // Only show pagination if there are multiple pages
           <Pagination
             total={totalPages}

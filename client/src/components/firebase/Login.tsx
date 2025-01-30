@@ -1,9 +1,9 @@
 import { Paper, Stack, Text, TextInput, PasswordInput, Group, Button, Anchor, Checkbox, Divider, Container, SimpleGrid } from "@mantine/core"
-import { GoogleButton } from "./googleButton";
+import { GoogleButton } from "../icons/googleButton";
 import { useForm } from '@mantine/form';
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { showNotification } from '@mantine/notifications';
-import { LinkedInButton } from "./linkedInButton";
+import { LinkedInButton } from "../icons/linkedInButton";
 
 interface LoginProps {
   handleSignInWithEmail: (values: { name: string; email: string; password: string; terms: boolean }) => void,
