@@ -10,7 +10,7 @@ import "@mantine/notifications/styles.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <MantineProvider>
+      <MantineProvider defaultColorScheme="auto">
         <Notifications />
         <App />
       </MantineProvider>
