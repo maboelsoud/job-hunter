@@ -10,7 +10,13 @@ const demoProps = {
   // h: 500,
   // mt: 'lg',
   // p: 20,
-  // style: { maxWidth: '100%', width: '80%' , minHeight: '100vh'}, // Make container wider
+  // size:"100%",
+  // fluid: true,
+  style: {
+    // maxWidth: '100%',
+    // width: '80%' ,
+    // minHeight: '100vh'
+  }, // Make container wider
 
 };
 
@@ -18,7 +24,7 @@ function App() {
 
   const loading = false;
   return (
-    <Container {...demoProps}>
+    <Container fluid {...demoProps}>
       <LoadingOverlay visible={loading} /> {/* Show loading overlay */}
       <Title order={1}>Job Statuses</Title>
       <Login/>
