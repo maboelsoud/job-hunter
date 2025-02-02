@@ -4,21 +4,11 @@ import { useForm } from '@mantine/form';
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { showNotification } from '@mantine/notifications';
 import { LinkedInButton } from "../icons/linkedInButton";
+import { logIn, loginWithGoogle, loginWithLinkedIn, signUp } from "../firebase";
+import { forgotPassword } from "../firebase/firebaseConfig";
 
-interface LoginProps {
-  handleSignInWithEmail: (values: { name: string; email: string; password: string; terms: boolean }) => void,
-  handleSignInWithGoogle: () => void
-  handleSignInWithLinkedIn: () => void
-  handleForgotPw: (email: string) => void,
-}
 
-export const Login: React.FC<LoginProps> = (
-  {
-    handleSignInWithEmail,
-    handleSignInWithGoogle,
-    handleSignInWithLinkedIn,
-    handleForgotPw,
-  }) => {
+export const Login: React.FC = () => {
 
   const [loginType, toggleLogin] = useToggle(['login', 'register']);
   const [isForgotPw, toggleForgotPw] = useToggle([false, true]);
@@ -46,16 +36,39 @@ export const Login: React.FC<LoginProps> = (
   const handleSubmit = async (values: any) => {
     try {
       if (isForgotPw) {
-        await handleForgotPw(values.email);
+        const result = await forgotPassword(values.email);
+        console.log("🚀 ~ handleSubmit ~ result:", result)
         form.reset();
-        showNotification({ title: 'Success', message: 'Password reset email sent', color: 'green' })
+        showNotification({ position:'top-left', title: 'Success', message: 'Password reset email sent', color: 'green' })
       } else {
-        await handleSignInWithEmail(values);
+        if (loginType === 'register') {
+          await signUp(values.email, values.password);
+        } else {
+          await logIn(values.email, values.password);
+        }
         form.reset();
-        showNotification({ title: 'Success', message: 'successfully signed in', color: 'green' })
+        showNotification({ position:'top-left', title: 'Success', message: 'successfully signed in', color: 'green' })
       }
     } catch (err: any) {
-      showNotification({ title: 'Error', message: err.message })
+      showNotification({ position:'top-left', title: 'Error', message: err.message })
+    }
+  }
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      showNotification({ position:'top-left', title: 'Success', message: 'successfully signed in', color: 'green' })
+    } catch (err: unknown) {
+      showNotification({ position:'top-left', title: 'Error', message: err?.message })
+    }
+  }
+
+  const handleSignInWithLinkedIn = async () => {
+    try {
+      await loginWithLinkedIn();
+      showNotification({ position:'top-left', title: 'Success', message: 'successfully signed in', color: 'green' })
+    } catch (err: unknown) {
+      showNotification({ position:'top-left', title: 'Error', message: err?.message })
     }
   }
 

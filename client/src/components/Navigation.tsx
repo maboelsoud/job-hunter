@@ -1,21 +1,21 @@
 import { Badge, NavLink } from "@mantine/core";
-import { NavLink as routerNavLink } from "react-router";
+// import { signOut } from "firebase/auth";
+import { NavLink as routerNavLink, useNavigate } from "react-router";
+import { logOut, useAuth } from "./firebase";
 
-export function Navigation({
-  auth,
-  onClick,
-}: {
-  auth: boolean;
+export function Navigation({onClick}: {
   onClick: () => void;
 }) {
+    const navigate = useNavigate();
+    const {signedIn} = useAuth();
   return (
     <>
-      {auth && (
+      {signedIn && (
         <>
           <NavLink
             onClick={onClick}
             component={routerNavLink}
-            to="/dashboard"
+            to="/"
             label="Dashboard"
             rightSection={
               <Badge size="xs" color="green">
@@ -33,7 +33,7 @@ export function Navigation({
           />
         </>
       )}
-      {!auth && (
+      {!signedIn && (
         <NavLink
           onClick={onClick}
           component={routerNavLink}
@@ -53,11 +53,13 @@ export function Navigation({
         to="/about"
         label="About"
       />
-      {auth && (
+      {signedIn && (
         <NavLink
-          onClick={onClick}
-          component={routerNavLink}
-          to="/handleSignOut"
+          onClick={async ()=> {
+            onClick();
+            await logOut();
+            navigate("/", { replace: true });
+          }}
           label="Logout"
         />
       )}
