@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import emailSample from '../../emailSample.json'
-import {getRecentEmails, GmailMessage, parseEmailContent} from './emailService'
-import { generateAuthUrl, getAccessTokenFromMemory, isUserAuthorized, setAccessToken, setAccessTokenToMemory } from '../auth/oAuthService';
+import {getRecentEmails, GmailMessage, parseEmailContent} from '../services/emailService'
+import { generateAuthUrl, getAccessTokenFromMemory, isUserAuthorized, setAccessToken, setAccessTokenToMemory } from '../oAuth/oAuthService';
 
 
 

@@ -47,7 +47,9 @@ export function generateAuthUrl(): string {
   // Redirect to the authorization URL
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
-    scope: ['https://www.googleapis.com/auth/gmail.readonly'],
+    scope: ['https://www.googleapis.com/auth/gmail.readonly',
+      "https://www.googleapis.com/auth/calendar"
+    ],
   });
   return authUrl;
 }

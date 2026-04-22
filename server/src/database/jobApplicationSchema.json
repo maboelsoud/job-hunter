@@ -1,0 +1,16 @@
+{
+  "userId": "string",
+  "employerName": "string",
+  "status": "string",
+  "actionToTake": "string",
+  "companyWebsite": "string",
+  "dateApplied": "string",
+  "interviewDate": "string",
+  "jobPosting": "string",
+  "roleName": "string",
+  "messages": [
+    {
+      "messageId": "string"
+    }
+  ]
+}

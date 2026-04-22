@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { DB_NAMES } from "./databaseModel";
-import { getDbInstances } from "./databaseService";
+import { getDbInstances } from "../services/databaseService";
 
 export async function getDBMessages(req: Request, res: Response): Promise<void> {
     try {
@@ -29,3 +29,17 @@ export async function postDBMessages(req: Request, res: Response): Promise<void>
 export async function postDBApplications(req: Request, res: Response): Promise<void> {
     // Implement the function
 }
+
+
+// export async function getDBSignedInUser(req: Request, res: Response): Promise<void> {
+//     try {
+//         const userId = req.query.userId as string;
+//         // check user exists in firebase authentification
+        
+//         // query the database for the user with the given userId else create one, but first check
+//         res.json(user);
+//     } catch (error) {
+//         console.error('Error fetching user', error);
+//         res.status(500).send('Error fetching user');
+//     }
+// };

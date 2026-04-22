@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { getClient } from '../auth/oAuthService';
+import { getClient } from '../oAuth/oAuthService';
 
 type headerType = { name: string, value: string };
 

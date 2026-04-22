@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import emailSample from '../../emailSample.json';
 import emailSample2 from '../../emailSample2.json';
-import { getModelresponse } from './geminiService';
+import { getModelresponse } from '../services/geminiService';
 
 const prompt = `1. parse this json of emails,
 2. filter to ones relating to job applications.

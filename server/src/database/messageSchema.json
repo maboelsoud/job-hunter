@@ -1,0 +1,10 @@
+{
+  "messageId": "string",
+  "type": ["email", "linkedin-message"],
+  "userId": "string",
+  "title": "string",
+  "to": "string",
+  "from": "string",
+  "snippet": "string",
+  "content": "string"
+}

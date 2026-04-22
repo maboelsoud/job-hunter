@@ -1,6 +1,7 @@
 
 import admin from 'firebase-admin';
-import { DB_NAMES, dbOutput } from './databaseModel';
+import { DB_NAMES, dbOutput } from '../database/databaseModel';
+import { testing } from 'googleapis/build/src/apis/testing';
 
 const serviceAccount = {
     projectId: process.env.GOOGLE_CLOUD_PROJECT,

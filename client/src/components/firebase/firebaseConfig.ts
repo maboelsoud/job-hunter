@@ -1,22 +1,25 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, getAuth, sendPasswordResetEmail, User } from "firebase/auth";
 import { createContext, useContext } from "react";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAc-l_ZQ9bnnh7UpXr-dGX6rST6sSyGj74",
+  authDomain: "job-hunter-448218.firebaseapp.com",
+  projectId: "job-hunter-448218",
+  storageBucket: "job-hunter-448218.firebasestorage.app",
+  messagingSenderId: "614172455862",
+  appId: "1:614172455862:web:562ef62b98d480efddc717"
 };
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 export interface AuthContextProps {
     signedIn: boolean;
     authLoading: boolean;
+    currentUser: User | undefined;
   }
   
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);

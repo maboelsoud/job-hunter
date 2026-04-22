@@ -1,0 +1,102 @@
+[
+  {
+    "employerName": "Regrello",
+    "status": "applied",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": "2025-01-22T03:18:11.000Z",
+    "interviewDate": null,
+    "jobPosting": "https://untapped.io/app/discover/jobs/a/a/2a907352-df0e-4ba3-9cb1-3c25a8af760f",
+    "roleName": "Software Engineer, Frontend"
+  },
+  {
+    "employerName": "Regrello",
+    "status": "applied",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": "2025-01-22T03:10:53.000Z",
+    "interviewDate": null,
+    "jobPosting": "https://untapped.io/app/discover/jobs/a/a/7e716d6d-5c11-4960-9727-ecf0b0e44fc0",
+    "roleName": "Software Engineer, Backend"
+  },
+  {
+    "employerName": "Twitch",
+    "status": "rejected",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": "2025-01-22T02:10:36.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": "Software Engineer"
+  },
+  {
+    "employerName": "Toast",
+    "status": "action required",
+    "actionToTake": "provide availability for interview",
+    "companyWebsite": "pos.toasttab.com",
+    "dateApplied": "2025-01-14T15:17:00.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": "Software Engineer"
+  },
+  {
+    "employerName": "Centari",
+    "status": "rejected",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": "2025-01-21T13:28:59.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": null
+  },
+  {
+    "employerName": "PwC",
+    "status": "action required",
+    "actionToTake": "book a time for the technical screen call",
+    "companyWebsite": "pwc.com",
+    "dateApplied": "2025-01-16T23:23:00.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": null
+  },
+  {
+    "employerName": "Google",
+    "status": "waiting on recruiter",
+    "actionToTake": null,
+    "companyWebsite": "careers.google.com",
+    "dateApplied": "2024-12-21T18:07:00.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": null
+  },
+  {
+    "employerName": "Threekit Technologies Inc.",
+    "status": "rejected",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": null,
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": null
+  },
+  {
+    "employerName": "Cadstrom",
+    "status": "need followup",
+    "actionToTake": "book a call sometime this week",
+    "companyWebsite": "cadstrom.io",
+    "dateApplied": "2025-01-08T24:09:00.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": "Senior Backend Engineer"
+  },
+  {
+    "employerName": "Alchemy",
+    "status": "rejected",
+    "actionToTake": null,
+    "companyWebsite": null,
+    "dateApplied": "2025-01-20T17:15:09.000Z",
+    "interviewDate": null,
+    "jobPosting": null,
+    "roleName": "Software Engineer (Growth)"
+  }
+]
